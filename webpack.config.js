@@ -6,10 +6,10 @@ const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 
 const config = {
   context: `${__dirname}/app`,
-  entry: './app.js',
+  entry: './frontend/app.js',
   output: {
     filename: 'script.js',
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'build/frontend'),
   },
 
   resolveLoader: {
@@ -24,6 +24,10 @@ const config = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel',
+      },
+      {
+        test: /\.(scss|css)$/,
+        loader: 'style!css!sass',
       },
     ],
   },
@@ -47,12 +51,12 @@ const config = {
   plugins: [
     new WebpackCleanupPlugin(), // cleans files from the webpack's output path
     new HtmlWebpackPlugin({
-      template: './index.html',
+      template: './frontend/index.html',
     }),
   ],
 
   devServer: {
-    contentBase: './build',
+    contentBase: './build/frontend',
     historyApiFallback: true,
     inline: true,
     open: true,
