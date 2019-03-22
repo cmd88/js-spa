@@ -10,6 +10,7 @@ const config = {
   output: {
     filename: 'script.js',
     path: path.resolve(__dirname, 'build/frontend'),
+    publicPath: '/',
   },
 
   resolveLoader: {
@@ -29,6 +30,13 @@ const config = {
         test: /\.(scss|css)$/,
         loader: 'style!css!sass',
       },
+      {
+        test: require.resolve('jquery'),
+        use: [{
+          loader: 'expose',
+          options: '$'
+        }],
+      }
     ],
   },
 

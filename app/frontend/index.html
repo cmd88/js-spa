@@ -87,29 +87,23 @@
 </head>
 
 <body>
+<header id="header">
 
-<body>
-<!-- Main Application Section -->
-<!-- Начало фрагмента №2 -->
-<header>
-    <h3><font color="#3AC1EF">▍<a class="banner"> Vanilla Todos PWA </a></font></h3>
 </header>
-<main id="app"></main>
-<footer>
-    <span>© 2019 Anurag Majumdar - Vanilla Todos SPA</span>
+<main id="app">
+    <button id="main" style="height: 30px">main</button>
+    <button id="description" style="height: 30px">description</button>
+    <div id="content"></div>
+</main>
+<footer id="footer">
+
 </footer>
 <!-- Конец фрагмента №2 -->
-
-<!-- Critical Scripts -->
-<!-- Начало фрагмента №3 -->
-<script async src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
-<!-- Конец фрагмента №3 -->
 
 <noscript>
     This site uses JavaScript. Please enable JavaScript in your browser.
 
 </noscript>
-</body>
 </body>
 
 </html>
