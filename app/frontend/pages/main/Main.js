@@ -1,6 +1,6 @@
 class Main {
-  static render(title) {
-    console.log(`render Main, title: ${title}`);
+  render = (title) => {
+    console.log('render Main page');
 
     return `<div>
             Main page: ${title}
@@ -8,5 +8,7 @@ class Main {
   }
 }
 
-export { Main };
+const MainPage = new Main();
+
+export { MainPage };
 

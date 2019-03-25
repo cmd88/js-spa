@@ -11,13 +11,49 @@ router.add('', function () {
   console.log('Home page');
   import( /* webpackChunkName: "Main" */ './pages/main/Main')
     .then(lazyModule => {
-      $("#content").html(lazyModule.Main.render('main title'));
+      $("#content").html(lazyModule.MainPage.render('main title'));
     })
     .catch(error => 'An error occurred while loading Module');
 });
 
-router.add('description/(:id)', function (id) {
-  console.log('description, ' + id);
+router.add('profile', function () {
+  console.log('redirect to profile');
+
+  import( /* webpackChunkName: "Main" */ './pages/main/Main')
+    .then(lazyModule => {
+      $("#content").html(lazyModule.MainPage.render('profile page'));
+    })
+    .catch(error => 'An error occurred while loading Module');
+});
+
+router.add('main', function () {
+  console.log('redirect to main');
+
+  import( /* webpackChunkName: "Main" */ './pages/main/Main')
+    .then(lazyModule => {
+      $("#content").html(lazyModule.MainPage.render('main page'));
+    })
+    .catch(error => 'An error occurred while loading Module');
+});
+
+router.add('structure', function () {
+  console.log('redirect to structure');
+
+  import( /* webpackChunkName: "Main" */ './pages/main/Main')
+    .then(lazyModule => {
+      $("#content").html(lazyModule.MainPage.render('structure page'));
+    })
+    .catch(error => 'An error occurred while loading Module');
+});
+
+router.add('theory', function () {
+  console.log('redirect to theory');
+
+  import( /* webpackChunkName: "Main" */ './pages/main/Main')
+    .then(lazyModule => {
+      $("#content").html(lazyModule.MainPage.render('theory page'));
+    })
+    .catch(error => 'An error occurred while loading Module');
 });
 
 router.addUriListener();

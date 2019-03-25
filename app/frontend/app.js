@@ -1,22 +1,11 @@
 import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { handleStore } from './store/store';
 
 $(() => {
   let store = handleStore(() => {
     if(store.pageIsLoad) {
-      import( /* webpackChunkName: "Router" */ './router')
-        .then(lazyModule => {
-          console.log('Router loaded');
 
-          $('#main').on('click', () => {
-            lazyModule.router.navigateTo('/');
-          });
-
-          $('#description').on('click', () => {
-            lazyModule.router.navigateTo('/description/2');
-          });
-        })
-        .catch(error => 'An error occurred while loading Module');
     }
   });
   console.log('doc rdy');
@@ -25,7 +14,7 @@ $(() => {
     .then(lazyModule => {
       console.log('Header loaded');
 
-      $('#header').html(lazyModule.Header.render());
+      $('#header').html(lazyModule.Header.init());
       store.headerIsLoad = true;
     })
     .catch(error => 'An error occurred while loading Module');
