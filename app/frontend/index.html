@@ -2,106 +2,32 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- Critical Styles -->
-    <!-- Начало фрагмента №1 -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <style>
-        html {
-            box-sizing: border-box;
-        }
-
-        *,
-        *:after,
-        *:before {
-            box-sizing: inherit;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font: 18px 'Oxygen', Helvetica;
-            background: #ececec;
-        }
-
-        header {
-            height: 60px;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            box-shadow: 1px 2px 6px 0px #777;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        .banner {
-            text-decoration: none;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        main {
-            display: flex;
-            justify-content: center;
-            height: calc(100vh - 140px);
-            padding: 20px 40px;
-            overflow-y: auto;
-        }
-
-        button {
-            background: #512DA8;
-            border: 2px solid #512DA8;
-            cursor: pointer;
-            box-shadow: 1px 1px 3px 0px #777;
-            color: #fff;
-            padding: 10px 15px;
-            border-radius: 20px;
-        }
-
-        .button {
-            display: flex;
-            justify-content: center;
-        }
-
-        button:hover {
-            box-shadow: none;
-        }
-
-        footer {
-            height: 40px;
-            background: #2d3850;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            padding: 40px;
+        #screensaver {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            background-color: rgba(223, 255, 202, 0.8);
+            cursor: wait;
         }
     </style>
-    <!-- Конец фрагмента №1 -->
-
-    <title>Vanilla Todos PWA</title>
+    <title>Demo Project</title>
 </head>
 
 <body>
-<header id="header">
+<header id="header" class="shadow-sm"></header>
 
-</header>
-<main id="app">
-    <button id="main" style="height: 30px">main</button>
-    <button id="description" style="height: 30px">description</button>
-    <div id="content"></div>
-</main>
-<footer id="footer">
+<main id="app"></main>
 
-</footer>
-<!-- Конец фрагмента №2 -->
+<footer id="footer"></footer>
 
-<noscript>
-    This site uses JavaScript. Please enable JavaScript in your browser.
+<div id="screensaver"></div>
 
-</noscript>
+<noscript>This site uses JavaScript. Please enable JavaScript in your browser.</noscript>
 </body>
-
 </html>

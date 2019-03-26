@@ -1,63 +1,57 @@
 import Router from 'vanilla-router';
 
+const $app = $('#app');
+
 const router = new Router({
   mode: 'history',
-  page404: function (path) {
-    console.log('"/' + path + '" Page not found');
+  page404: (path) => {
+    import( /* webpackChunkName: "Error" */ './pages/error/Error')
+      .then(lazyModule => {
+        $app.html(lazyModule.ErrorPage.render());
+      })
+      .catch(error => 'An error occurred while loading Module');
   }
 });
 
-router.add('', function () {
-  console.log('Home page');
+router.add('/', function () {
+  router.navigateTo('/main');
+});
+
+
+router.add('main', function () {
   import( /* webpackChunkName: "Main" */ './pages/main/Main')
     .then(lazyModule => {
-      $("#content").html(lazyModule.MainPage.render('main title'));
+      $app.html(lazyModule.MainPage.render('main page'));
     })
     .catch(error => 'An error occurred while loading Module');
 });
 
 router.add('profile', function () {
-  console.log('redirect to profile');
-
-  import( /* webpackChunkName: "Main" */ './pages/main/Main')
+  import( /* webpackChunkName: "Profile" */ './pages/profile/Profile')
     .then(lazyModule => {
-      $("#content").html(lazyModule.MainPage.render('profile page'));
-    })
-    .catch(error => 'An error occurred while loading Module');
-});
-
-router.add('main', function () {
-  console.log('redirect to main');
-
-  import( /* webpackChunkName: "Main" */ './pages/main/Main')
-    .then(lazyModule => {
-      $("#content").html(lazyModule.MainPage.render('main page'));
+      $app.html(lazyModule.ProfilePage.render());
     })
     .catch(error => 'An error occurred while loading Module');
 });
 
 router.add('structure', function () {
-  console.log('redirect to structure');
-
-  import( /* webpackChunkName: "Main" */ './pages/main/Main')
+  import( /* webpackChunkName: "Structure" */ './pages/structure/Structure')
     .then(lazyModule => {
-      $("#content").html(lazyModule.MainPage.render('structure page'));
+      $app.html(lazyModule.StructurePage.render());
     })
     .catch(error => 'An error occurred while loading Module');
 });
 
 router.add('theory', function () {
-  console.log('redirect to theory');
-
-  import( /* webpackChunkName: "Main" */ './pages/main/Main')
+  import( /* webpackChunkName: "Theory" */ './pages/theory/Theory')
     .then(lazyModule => {
-      $("#content").html(lazyModule.MainPage.render('theory page'));
+      $app.html(lazyModule.TheoryPage.render());
     })
     .catch(error => 'An error occurred while loading Module');
 });
 
 router.addUriListener();
 
-// router.navigateTo('/');
+router.check();
 
 export { router };

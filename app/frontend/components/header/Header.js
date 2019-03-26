@@ -1,3 +1,5 @@
+import './style.scss';
+
 const Header = {
     init() {
       this.initHandleClick();
@@ -7,12 +9,11 @@ const Header = {
       $('header').on('click', e => {
         e.preventDefault();
 
-        const { target: { dataset: {path = undefined}}} = e;
+        const { target: { dataset: { path = undefined } } } = e;
 
-        if(path) {
+        if (path) {
           import( /* webpackChunkName: "Router" */ './../../router')
             .then(lazyModule => {
-              console.log('Router loaded');
               lazyModule.router.navigateTo(path);
             })
             .catch(error => 'An error occurred while loading Module');
@@ -21,7 +22,7 @@ const Header = {
     },
     render() {
       return `
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 100%; width: 100%;">
                 <a class="navbar-brand" data-path="main" href="#">Demo Project</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -42,6 +43,10 @@ const Header = {
                             <a class="nav-link" data-path="theory" href="#">Theory</a>
                         </li>
                     </ul>
+                </div>
+                
+                <div class="d-none d-lg-block d-xl-block text-info">
+                    load time: <span id="load-time"></span>
                 </div>
             </nav>
         `;
