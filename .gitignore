@@ -1,10 +1,8 @@
-# dependencies
-/node_modules
+.idea
 
-# production
-/build
+/backend/node_modules
+
+/frontend/node_modules
+/frontend/build
 
 npm-debug.log*
-
-# editors
-.idea
