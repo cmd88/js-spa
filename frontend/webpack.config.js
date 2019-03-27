@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlMinifierPlugin = require('html-minifier-webpack-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const config = {
   context: `${__dirname}/app`,
@@ -61,6 +62,9 @@ const config = {
     new HtmlWebpackPlugin({
       template: './index.html',
     }),
+    new CopyPlugin([
+      { from: 'sw/sw.js', to: 'sw' },
+    ]),
   ],
 
   devServer: {
@@ -68,7 +72,7 @@ const config = {
     historyApiFallback: true,
     inline: true,
     open: true,
-    port: 3010,
+    port: 3011,
   },
 };
 

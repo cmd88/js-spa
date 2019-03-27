@@ -1,4 +1,4 @@
-const http = require('http');
+const http = require('https');
 
 class HttpServer {
   constructor(app, config) {
@@ -21,8 +21,8 @@ class HttpServer {
       next();
     });
 
-    this.app.get('/get-item', (req, res) => {
-      res.json({ item: 123 });
+    this.app.get('/profile', (req, res) => {
+      res.json({ profile: 123 });
     });
   }
 }

@@ -2,6 +2,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { handleStore } from './store/store';
 import './app.scss';
+import { profile } from './requests/axios';
 
 let startTimeLoad = Date.now();
 
@@ -38,7 +39,20 @@ $(() => {
       store.footerIsLoad = true;
     })
     .catch(error => 'An error occurred while loading Module');
-
 });
+
+// check, that browser is support Service Worker API.
+if ('serviceWorker' in navigator) {
+  // register sw.
+  navigator.serviceWorker.register('./sw/sw.js')
+    .then(() => navigator.serviceWorker.ready.then((worker) => {
+      worker.sync.register('syncdata');
+
+    }))
+    .catch((err) => console.log(err));
+}
+
+setTimeout(() => {profile()}, 5000);
+
 
 
