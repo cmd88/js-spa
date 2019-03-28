@@ -63,7 +63,7 @@ const config = {
       template: './index.html',
     }),
     new CopyPlugin([
-      { from: 'sw/sw.js', to: 'sw' },
+      { from: 'sw.js', to: 'sw.js' },
     ]),
   ],
 

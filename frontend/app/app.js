@@ -2,14 +2,15 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { handleStore } from './store/store';
 import './app.scss';
-import { profile } from './requests/axios';
+import { profileHandler } from './controllers/requests';
+import { ServiceWorker } from './controllers/serviceWorker';
 
 let startTimeLoad = Date.now();
 
 $(() => {
   let store = handleStore(() => {
     if(store.pageIsLoad) {
-      if(Date.now() - startTimeLoad > 1000) { // show screen saver min 1 sec
+      if(Date.now() - startTimeLoad > 1000) { // show screensaver min 1 sec
         $('#screensaver').remove();
         $('#load-time').text(`${Date.now() - startTimeLoad} ms`);
 
@@ -23,6 +24,8 @@ $(() => {
       }
     }
   });
+
+  setTimeout(() => {profileHandler()}, 4000);
 
   // render Header
   import( /* webpackChunkName: "Header" */ './components/header/Header')
@@ -41,18 +44,8 @@ $(() => {
     .catch(error => 'An error occurred while loading Module');
 });
 
-// check, that browser is support Service Worker API.
-if ('serviceWorker' in navigator) {
-  // register sw.
-  navigator.serviceWorker.register('./sw/sw.js')
-    .then(() => navigator.serviceWorker.ready.then((worker) => {
-      worker.sync.register('syncdata');
+ServiceWorker.init();
 
-    }))
-    .catch((err) => console.log(err));
-}
-
-setTimeout(() => {profile()}, 5000);
 
 
 

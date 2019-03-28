@@ -12,8 +12,5 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "ws": "^6.2.1"
-  },
-  "dependencies": {
-    "https-localhost": "^4.0.0"
   }
 }

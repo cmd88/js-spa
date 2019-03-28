@@ -2,6 +2,7 @@ const appState = {
   headerIsLoad: false,
   footerIsLoad: false,
   pageIsLoad: false,
+  profile: {},
 };
 
 const handleStore = (onChangeCallback) => {
@@ -12,7 +13,7 @@ const handleStore = (onChangeCallback) => {
       if(prop === 'headerIsLoad' || prop === 'footerIsLoad')
         target.pageIsLoad = target.headerIsLoad && target.footerIsLoad;
 
-      onChangeCallback();
+      onChangeCallback && onChangeCallback();
       return true;
     }
   })
